@@ -1,0 +1,35 @@
+<div class="main-layout">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+
+    <app-step-indicator />
+
+    <!-- Step 1: Account Lookup -->
+    @if (currentStep() === 1) {
+      <app-account-lookup />
+    }
+
+    <!-- Step 2: Verify Identity -->
+    @if (currentStep() === 2) {
+      <app-customer-verify />
+    }
+
+    <!-- Step 3: Select Concern -->
+    @if (currentStep() === 3) {
+      <app-concern-select />
+    }
+
+    <!-- Step 4: Resolution -->
+    @if (currentStep() === 4) {
+      <app-resolution />
+    }
+
+  </div>
+
+  <!-- RIGHT PANEL: Pipeline Visualization -->
+  <div class="right-panel">
+    <app-pipeline-viz />
+  </div>
+
+</div>

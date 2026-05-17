@@ -1,0 +1,20 @@
+<div class="card active-card result-card">
+  <div class="result-status">
+    <div class="status-badge">{{ response.status }}</div>
+    <span class="concern-label">{{ concernLabel }}</span>
+  </div>
+
+  <div class="result-body" [innerHTML]="response.body"></div>
+
+  <div class="ticket-ref">
+    Ticket Reference: <span class="ticket-num">{{ ticketRef }}</span>
+    &nbsp;·&nbsp; A copy will be sent to your registered contact.
+  </div>
+
+  <button class="action-btn accent-btn" (click)="newConcern()">
+    + Raise Another Concern
+  </button>
+  <button class="action-btn ghost-btn" (click)="returnHome()">
+    🏠 Return to Home
+  </button>
+</div>

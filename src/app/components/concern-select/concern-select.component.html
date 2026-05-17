@@ -1,0 +1,28 @@
+<div class="card active-card">
+  <h2 class="card-title">How Can We Help You?</h2>
+  <p class="card-subtitle">
+    Select the concern that best describes your issue. Our system will retrieve the relevant
+    information and provide a resolution.
+  </p>
+
+  <div class="concern-pills">
+    @for (concern of concerns; track concern.key) {
+      <button
+        class="pill"
+        [class.selected]="selectedKey() === concern.key"
+        [disabled]="isLoading()"
+        (click)="select(concern)"
+      >
+        <span class="pill-icon">{{ concern.icon }}</span>
+        {{ concern.label }}
+      </button>
+    }
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-row">
+      <div class="spinner"></div>
+      <span>{{ loadingText() }}</span>
+    </div>
+  }
+</div>

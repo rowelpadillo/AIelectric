@@ -1,0 +1,31 @@
+# Node dependencies
+node_modules/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Build and compiled output
+dist/
+out-tsc/
+bazel-out/
+
+# Angular cache
+.angular/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+
+# Testing
+coverage/
+
+# Environment files
+.env

@@ -1,0 +1,37 @@
+<div class="card" [class.active-card]="true">
+  <h2 class="card-title">Enter Your Account Number</h2>
+  <p class="card-subtitle">
+    Please enter your 8-digit electricity account number printed on your billing statement.
+  </p>
+
+  <div class="input-group">
+    <input
+      class="kiosk-input"
+      type="text"
+      placeholder="e.g. 12345678"
+      maxlength="8"
+      autocomplete="off"
+      [(ngModel)]="accountNumber"
+      (keydown)="onKeyDown($event)"
+      [disabled]="isLoading()"
+    />
+    <button
+      class="btn-primary"
+      (click)="lookup()"
+      [disabled]="isLoading()"
+    >
+      {{ isLoading() ? 'Searching...' : 'Look Up →' }}
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-row">
+      <div class="spinner"></div>
+      <span>Retrieving account information...</span>
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div class="error-msg">{{ errorMessage() }}</div>
+  }
+</div>

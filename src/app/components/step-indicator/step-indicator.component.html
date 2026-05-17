@@ -1,0 +1,14 @@
+<div class="step-indicator">
+  @for (step of steps; track step.num) {
+    <div class="step-item" [class]="getStepState(step.num)">
+      <div class="step-num">
+        {{ getStepState(step.num) === 'done' ? '✓' : step.num }}
+      </div>
+      {{ step.label }}
+    </div>
+
+    @if (step.num < steps.length) {
+      <div class="step-line" [class]="getLineState(step.num)"></div>
+    }
+  }
+</div>

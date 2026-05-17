@@ -1,0 +1,48 @@
+<div class="card active-card" @fadeIn>
+  <h2 class="card-title">Verify Your Information</h2>
+  <p class="card-subtitle">
+    Please confirm the details below match your records before proceeding.
+  </p>
+
+  @if (account(); as acct) {
+    <div class="info-grid">
+      <div class="info-field">
+        <span class="info-label">Account Number</span>
+        <span class="info-value accent">{{ acct.account }}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Full Name</span>
+        <span class="info-value">{{ acct.name }}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Service Address</span>
+        <span class="info-value">{{ acct.address }}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Meter Number</span>
+        <span class="info-value">{{ acct.meter }}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Account Type</span>
+        <span class="info-value">{{ acct.type }}</span>
+      </div>
+      <div class="info-field">
+        <span class="info-label">Status</span>
+        <span class="info-value" [style.color]="statusColor">{{ acct.status }}</span>
+      </div>
+    </div>
+
+    <div class="balance-bar">
+      <div>
+        <div class="balance-label">Current Balance Due</div>
+        <div class="due-date">Due: {{ acct.dueDate }}</div>
+      </div>
+      <div class="balance-amount">{{ acct.balance }}</div>
+    </div>
+
+    <div class="verify-btns">
+      <button class="btn-confirm" (click)="confirm()">✓ Yes, This Is Me</button>
+      <button class="btn-cancel"  (click)="reject()">✗ Not Me</button>
+    </div>
+  }
+</div>

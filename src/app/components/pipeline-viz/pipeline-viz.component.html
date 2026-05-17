@@ -1,0 +1,50 @@
+<div class="panel-header">
+  <span class="header-dot"></span>
+  Live Data Pipeline
+</div>
+
+<div class="pipeline">
+
+  @if (showIdle) {
+    <div class="idle-state">
+      <div class="idle-icon">🛰️</div>
+      <div class="idle-text">
+        Awaiting query...<br>
+        Pipeline will animate when you<br>
+        begin your transaction.
+      </div>
+    </div>
+  }
+
+  @if (!showIdle) {
+    @for (node of nodes(); track trackNode($index, node)) {
+      <div class="pipe-node" [class]="node.state">
+        <div class="pipe-icon">{{ node.state === 'done' ? '✓' : node.icon }}</div>
+        <div class="pipe-content">
+          <div class="pipe-name">{{ node.name }}</div>
+          <div class="pipe-desc">{{ node.desc }}</div>
+        </div>
+      </div>
+    }
+  }
+
+</div>
+
+@if (!showIdle) {
+  <div class="meter-row">
+    <span class="meter-label">Throughput</span>
+    <div class="meter-bar">
+      <div class="meter-fill" [style.width.%]="meterPercent()"></div>
+    </div>
+    <span class="meter-val">{{ meterDisplay() }}</span>
+  </div>
+
+  <div class="log-console" #logConsole>
+    @for (entry of logEntries(); track $index) {
+      <div class="log-entry">
+        <span class="log-ts">[{{ entry.timestamp }}]</span>
+        <span [class]="'log-' + entry.type">{{ entry.text }}</span>
+      </div>
+    }
+  </div>
+}
