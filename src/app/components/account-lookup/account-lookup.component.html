@@ -1,15 +1,15 @@
 <div class="card" [class.active-card]="true">
   <h2 class="card-title">Enter Your Account Number</h2>
   <p class="card-subtitle">
-    Please enter your 8-digit electricity account number printed on your billing statement.
+    Please enter your 10-digit electricity account number printed on your billing statement.
   </p>
 
   <div class="input-group">
     <input
       class="kiosk-input"
       type="text"
-      placeholder="e.g. 12345678"
-      maxlength="8"
+      placeholder="e.g. 1234567890"
+      maxlength="10"
       autocomplete="off"
       [(ngModel)]="accountNumber"
       (keydown)="onKeyDown($event)"
